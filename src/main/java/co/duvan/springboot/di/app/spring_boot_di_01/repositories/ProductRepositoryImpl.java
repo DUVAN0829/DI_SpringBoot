@@ -3,8 +3,12 @@ package co.duvan.springboot.di.app.spring_boot_di_01.repositories;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
 import co.duvan.springboot.di.app.spring_boot_di_01.models.Product;
 
+@Repository
 public class ProductRepositoryImpl implements ProductRepository {
 
     // *Vars */
