@@ -1,6 +1,6 @@
 package co.duvan.springboot.di.app.spring_boot_di_01.models;
 
-public class Product {
+public class Product implements Cloneable {
 
     // *Vars */
     private Long id;
@@ -41,6 +41,18 @@ public class Product {
 
     public void setPrice(long price) {
         this.price = price;
+    }
+
+    //*methods */
+    @Override
+    public Object clone() {
+
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException e) {
+            return new Product(id, name, price);
+        }
+
     }
 
 }
