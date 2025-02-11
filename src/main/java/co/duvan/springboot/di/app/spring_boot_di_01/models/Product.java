@@ -43,10 +43,4 @@ public class Product {
         this.price = price;
     }
 
-    // *Methods */
-    @Override
-    public String toString() {
-        return "Product [id=" + id + ", name=" + name + ", price=" + price + "]";
-    }
-
 }

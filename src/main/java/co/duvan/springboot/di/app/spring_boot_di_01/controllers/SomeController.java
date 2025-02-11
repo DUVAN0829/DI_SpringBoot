@@ -13,7 +13,7 @@ import co.duvan.springboot.di.app.spring_boot_di_01.services.ProductService;
 @RestController
 @RequestMapping("/api")
 public class SomeController {
-
+    
     private ProductService service = new ProductService();
 
     @GetMapping
