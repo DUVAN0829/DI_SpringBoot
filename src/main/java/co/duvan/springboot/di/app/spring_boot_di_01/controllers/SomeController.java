@@ -2,7 +2,6 @@ package co.duvan.springboot.di.app.spring_boot_di_01.controllers;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +14,15 @@ import co.duvan.springboot.di.app.spring_boot_di_01.services.ProductServices;
 @RequestMapping("/api")
 public class SomeController {
     
-    @Autowired
+    //*Vars */
     private ProductServices service;
 
+    //*Constructor */
+    public SomeController(ProductServices service) {
+        this.service = service;
+    }
+
+    //*Methods */
     @GetMapping
     public List<Product> list() {
         return service.findAll();
