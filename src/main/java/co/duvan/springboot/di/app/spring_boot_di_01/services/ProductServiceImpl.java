@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import co.duvan.springboot.di.app.spring_boot_di_01.models.Product;
@@ -17,6 +18,8 @@ public class ProductServiceImpl implements ProductServices {
     // @Autowired
     // @Qualifier("productRepositoryImpl")
     private ProductRepository repository;
+    @Autowired
+    private Environment enviroment;
 
     //*Constructor */
     public ProductServiceImpl(@Qualifier("productFoo") ProductRepository repository) {
@@ -29,7 +32,7 @@ public class ProductServiceImpl implements ProductServices {
 
         return repository.findAll().stream().map(p -> {
 
-            Double priceTax = p.getPrice() * 2.5d;
+            Double priceTax = p.getPrice() * enviroment.getProperty("config.price.tax", Double.class);
             // Product product = new Product(p.getId(), p.getName(), priceTax.longValue());
             Product product = (Product) p.clone();
             product.setPrice(priceTax.longValue());
